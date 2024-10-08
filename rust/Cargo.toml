@@ -1,0 +1,19 @@
+[package]
+name = "gear_cutter"
+version = "0.1.0"
+authors = ["Konstantinos Poulios"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "gear_cutter"
+path = "src/lib.rs"
+crate-type = ["rlib"]
+
+[[bin]]
+name = "gear_cutter_rs"
+path = "src/main.rs"
+
+[package.metadata]
+name = "gear_cutter"

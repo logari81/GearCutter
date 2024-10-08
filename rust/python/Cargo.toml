@@ -1,0 +1,17 @@
+[package]
+name = "gear_cutter_python"
+version = "0.1.0"
+authors = ["Konstantinos Poulios"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "python_bindings"
+path = "python_bindings.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.22.3", features = ["extension-module"] }
+gear_cutter = { path = ".." }
+
