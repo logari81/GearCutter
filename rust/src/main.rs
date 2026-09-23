@@ -192,7 +192,8 @@ fn main() -> Result<()> {
                 let mut h_FaP0: f64 = 0.;
                 let mut h_prP0: f64 = 0.;
                 let mut rho_aP0: f64 = 0.;
-                for &name in ["alfa_P0", "m_n", "h_fP0", "h_aP0", "rho_aP0"].iter() {
+                for &name in ["alfa_P0", "alfa_KP0", "alfa_prP0", "m_n",
+                              "h_fP0", "h_FaP0", "h_prP0", "rho_aP0"].iter() {
                     let next_line = lines.next().unwrap_or_else(|| {panic!("Unexpected end of input file");})?;
                     if next_line.starts_with(name) {
                         if let Some(valstr) = next_line.split(":").last().map(|s| s.trim()) {
