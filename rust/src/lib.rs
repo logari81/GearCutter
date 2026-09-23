@@ -149,8 +149,8 @@ fn tool_params_internal_gear(
     let h_FaP0 = CG * sin_alfa_t + xm_n;
     let r_Ff1 = norm(AB, BE + EG);
     let HI = CG * cos_alfa_t + h_FaP0 * tan_alfa_t + s_P0 / 2.0;
-    let theta = (AB - DE).acos() - alfa_t;
-    let phi = DE.acos() - alfa_t - theta;
+    let theta = ((AB - DE) / AD).acos() - alfa_t;
+    let phi = (DE / DF).acos() - alfa_t - theta;
     let phi0 = phi - (HI / AC - theta) * (z.abs() as f64) / (z_0 as f64);
     let x_m = DF * phi0.sin();
     let y_m = DF * phi0.cos();
@@ -569,7 +569,7 @@ fn build_internal_gear_tool_contours(
 ) -> (f64, f64) {
     // Account for helix angle
     let m_t = m_n / beta.cos();
-    let alfa_P0 = (alfa_P0.to_radians().tan() / beta.cos()).atan();
+    let alfa_P0 = (alfa_P0.tan() / beta.cos()).atan();
     // The impact of the helix angle on rho_aP0 is neglected
 
     // Auxiliary variables
@@ -622,7 +622,7 @@ fn build_internal_gear_tool_contours(
         cur_arc.y_tool_m = y_m;
         cur_arc.rho = rho_aP0;
         cur_arc.fi_tool_1 = 0.0;
-        cur_arc.fi_tool_2 = f64::atan2(y_m,x_m);
+        cur_arc.fi_tool_2 = PI / 2.0;
     }
 
     // 4th segment (arc)
@@ -632,7 +632,7 @@ fn build_internal_gear_tool_contours(
         cur_arc.x_tool_m = -x_m;
         cur_arc.y_tool_m = y_m;
         cur_arc.rho = rho_aP0;
-        cur_arc.fi_tool_1 = f64::atan2(y_m,x_m);
+        cur_arc.fi_tool_1 = PI / 2.0;
         cur_arc.fi_tool_2 = PI;
     }
     (r_Ff, a_tool)
@@ -745,7 +745,8 @@ pub fn generate_profile(
     let mut pts: Vec<ContourPoint> = vec![ContourPoint::default(); n_profile];
 
     let r_w = (z.abs() as f64) * m_n / beta.cos() / 2.0;
-    r_f = r_w + if z > 0 { x * m_n - h_aP0 } else { -x * m_n - h_aP0 };
+    r_f = if z > 0 { r_w + x * m_n - h_aP0 }
+          else     { r_w - x * m_n + h_aP0 };
 
     let mut tool_pos: Vec<CSpos> = vec![CSpos {
         x: 0.0,

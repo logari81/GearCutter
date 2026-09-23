@@ -129,7 +129,7 @@ fn main() -> Result<()> {
                                    next_line, e);
                             });
                         match name {
-                            "d_a"  => { r_a = val/2.; }
+                            "d_a"  => { r_a = val.abs()/2.; }
                             "x"    => { x = val; }
                             "beta" => { beta = val.to_radians(); }
                             &_ => { panic!("Should never happen, internal error"); }
