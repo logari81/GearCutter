@@ -27,7 +27,7 @@
 Module Konstanten
 
    !------ Konstanten ------------------------------------
-   Real(8),Parameter    :: PI=3.14159265358979
+   Real(8),Parameter    :: PI=3.141592653589793d0
 
 End Module Konstanten
 !***************************************************
