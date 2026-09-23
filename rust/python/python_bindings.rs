@@ -175,7 +175,7 @@ fn generate_tooth_profile(
     if let Ok(tool1) = tool.extract::<PyRef<CuttingToolRack>>() {
         gear_cutter::generate_external_gear_tooth_profile(
             tool1.m_n,
-            beta,
+            beta.to_radians(),
             tool1.h_aP0 * tool1.m_n,
             tool1.alfa_P0.to_radians(),
             tool1.rho_aP0 * tool1.m_n,
@@ -193,7 +193,7 @@ fn generate_tooth_profile(
     } else if let Ok(tool2) = tool.extract::<PyRef<CuttingToolRackWithProtuberance>>() {
         gear_cutter::generate_external_gear_tooth_profile_with_protuberance(
             tool2.m_n,
-            beta,
+            beta.to_radians(),
             tool2.h_prP0 * tool2.m_n,
             tool2.alfa_P0.to_radians(),
             tool2.rho_aP0 * tool2.m_n,
@@ -214,7 +214,7 @@ fn generate_tooth_profile(
     } else if let Ok(tool3) = tool.extract::<PyRef<CuttingToolPinion>>() {
         gear_cutter::generate_internal_gear_tooth_profile(
             tool3.m_n,
-            beta,
+            beta.to_radians(),
             tool3.h_aP0 * tool3.m_n,
             tool3.alfa_P0.to_radians(),
             tool3.rho_aP0 * tool3.m_n,

@@ -131,7 +131,7 @@ fn main() -> Result<()> {
                         match name {
                             "d_a"  => { r_a = val/2.; }
                             "x"    => { x = val; }
-                            "beta" => { beta = val; }
+                            "beta" => { beta = val.to_radians(); }
                             &_ => { panic!("Should never happen, internal error"); }
                         }
                     }
