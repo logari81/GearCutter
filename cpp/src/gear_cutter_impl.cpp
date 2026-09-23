@@ -751,8 +751,8 @@ void generate_internal_gear_tooth_profile // internal gear cutting
    std::vector<int> &contour_xy_id)                       // output
 {
   double r_Ff, a_tool;
-  build_internal_gear_tool_contours(m_n, beta, h_aP0, alfa_P0, rho_aP0,
-                                    z, x, z_0, r_a0,
+  build_internal_gear_tool_contours(m_n, beta, alfa_P0, h_aP0, rho_aP0,
+                                    x, z, z_0, r_a0,
                                     tool_contours, r_Ff, a_tool);
   generate_profile(ToolType::INTERNAL,
                    m_n, beta, h_aP0, z, x, r_a,
