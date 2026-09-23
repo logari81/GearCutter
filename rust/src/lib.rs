@@ -495,7 +495,7 @@ fn build_tool_with_protuberance_contour(
         cur_arc.x_tool_m = x_orig + h_FprP0 * alfa_prP0.tan() + rho_aP0 * alfa_prP0.cos();
         cur_arc.y_tool_m = -h_FaP0 - h_prP0 + rho_aP0;
         cur_arc.rho = rho_aP0;
-        cur_arc.fi_tool_1 = PI + alfa_P0;
+        cur_arc.fi_tool_1 = PI + alfa_prP0;
         cur_arc.fi_tool_2 = 3.0 * PI / 2.0;
     }
     // 5th segment (line)
